@@ -71,19 +71,24 @@ img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit}
 :focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
-.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,28px)}
+.ic{width:1em;height:1em;fill:currentColor;display:block;flex:0 0 auto}
+.wrap{width:100%;max-width:1760px;margin:0 auto;padding:0 clamp(18px,3.2vw,64px)}
 .script{font-family:'Caveat',cursive}
 .only-dark{display:none}
 html[data-theme="dark"] .only-dark{display:block}
 html[data-theme="dark"] .only-light{display:none}
 
 /* ---------- Révélations au défilement ---------- */
-.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1);transition-delay:var(--d,0ms)}
+.js .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}
 .js .reveal-x{opacity:0;transform:translateX(-26px)}
 .js .reveal-x.in{opacity:1;transform:none}
 .js .reveal-zoom{opacity:0;transform:scale(.94)}
 .js .reveal-zoom.in{opacity:1;transform:none}
+/* entrée en bascule 3D, réservée aux cartes */
+.js .reveal-card{opacity:0;transform:perspective(1100px) rotateX(11deg) translateY(52px);transform-origin:top center;
+  transition:opacity .8s ease,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}
+.js .reveal-card.in{opacity:1;transform:perspective(1100px) rotateX(0deg) translateY(0)}
 
 /* ---------- Barre de progression de lecture ---------- */
 .progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:120;background:transparent;pointer-events:none}
@@ -165,8 +170,8 @@ header.scrolled .nav{padding:8px 0}
 .btn-yellow:hover{background:#e0a505;transform:translateY(-3px);box-shadow:0 14px 28px rgba(245,182,13,.38)}
 .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text);padding:12px 22px;font-size:13.5px}
 .btn-ghost:hover{border-color:var(--red);color:var(--red)}
-#themeToggle i{display:block;transition:transform .55s cubic-bezier(.2,.8,.3,1),opacity .3s ease}
-#themeToggle.spin i{transform:rotate(360deg) scale(1.15)}
+#themeToggle .ic{transition:transform .55s cubic-bezier(.2,.8,.3,1),opacity .3s ease}
+#themeToggle.spin .ic{transform:rotate(360deg) scale(1.15)}
 
 /* =================== MENU HAMBURGER =================== */
 .burger{
@@ -260,7 +265,7 @@ html[data-theme="dark"] .mnav-list a:hover,html[data-theme="dark"] .mnav-list a.
   content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--red),var(--yellow));
   transform:scale(0);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.3,1),opacity .35s ease;
 }
-.mnav-soc a i{position:relative;z-index:2}
+.mnav-soc a i,.mnav-soc a .ic{position:relative;z-index:2}
 .mnav-soc a:hover{color:#fff;border-color:transparent;transform:translateY(-4px)}
 .mnav-soc a:hover::before{transform:scale(1);opacity:1}
 .mnav-contact{font-size:12.8px;color:var(--muted);line-height:2;margin-top:18px}
@@ -271,26 +276,26 @@ html[data-theme="dark"] .mnav-contact i{color:var(--yellow)}
 
 /* =================== HERO =================== */
 .hero{position:relative;background:var(--bg);padding-bottom:6px;overflow:hidden}
-.hero-inner{display:grid;grid-template-columns:1.05fr 1.25fr;gap:26px;align-items:center;min-height:380px;padding-top:24px}
+.hero-inner{display:grid;grid-template-columns:1.02fr 1.28fr;gap:clamp(26px,4vw,60px);align-items:center;min-height:380px;padding-top:30px}
 .eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.6px;font-size:13px;margin-bottom:14px;
   padding:7px 14px;border-radius:999px;background:var(--red-soft);color:var(--red)}
 .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.45);opacity:.5}}
-.hero h1{font-size:clamp(30px,4.4vw,46px);line-height:1.12;font-weight:800;letter-spacing:-1px}
+.hero h1{font-size:clamp(30px,3.8vw,54px);line-height:1.1;font-weight:800;letter-spacing:-1.2px}
 .hero h1 .red{color:var(--red)}
 html[data-theme="dark"] .hero h1 .red{color:var(--yellow)}
-.hero h1 .thin{font-weight:600;font-size:clamp(23px,3.3vw,34px);display:block;margin-top:8px;line-height:1.25}
+.hero h1 .thin{font-weight:600;font-size:clamp(23px,2.8vw,39px);display:block;margin-top:10px;line-height:1.24}
 .brush{width:170px;height:12px;margin:16px 0 26px;
   background:linear-gradient(90deg,var(--yellow),var(--yellow-2));border-radius:40% 60% 50% 50%/100% 100% 100% 100%;transform:skewX(-14deg)}
 html[data-theme="dark"] .hero .brush{background:linear-gradient(90deg,var(--red),#ff6a6f)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
-.hero-media{position:relative;height:clamp(240px,42vw,350px);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.hero-media{position:relative;height:clamp(240px,34vw,430px);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg)}
 .hero-media .ph{
   position:absolute;inset:0;background-image:var(--hero-img);background-size:cover;background-position:center;
   transform:scale(1.04);animation:kenburns 18s ease-in-out infinite alternate;
   transition:background-image .4s ease;
 }
-@keyframes kenburns{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.14) translate(-1.5%,-1.5%)}}
+@keyframes kenburns{from{transform:translateY(var(--par,0)) scale(1.04)}to{transform:translateY(var(--par,0)) scale(1.13)}}
 .hero-media::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,var(--bg) 0%,rgba(0,0,0,0) 34%),linear-gradient(0deg,rgba(0,0,0,.35),transparent 55%);
@@ -318,21 +323,23 @@ html[data-theme="dark"] .hero .brush{background:linear-gradient(90deg,var(--red)
 html[data-theme="dark"] .hero-features i{color:var(--yellow)}
 
 /* =================== SERVICES =================== */
-.services{background:var(--bg-alt);padding:60px 0 66px;position:relative;overflow:hidden}
+.services{background:var(--bg-alt);padding:clamp(52px,6vw,84px) 0 clamp(56px,6vw,90px);position:relative;overflow:hidden}
 .services::before{
   content:"";position:absolute;top:-120px;right:-120px;width:340px;height:340px;border-radius:50%;
   background:radial-gradient(circle,var(--yellow-soft),transparent 70%);pointer-events:none;
 }
 .services .wrap{position:relative;z-index:2}
-.services-grid{display:grid;grid-template-columns:.95fr 2.6fr;gap:38px}
+.services-head{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:end;margin-bottom:40px}
+.services-head .lead{margin:0 0 22px}
 .tag{display:flex;align-items:center;gap:12px;font-size:11.5px;font-weight:700;letter-spacing:1.6px;color:var(--muted);text-transform:uppercase;margin-bottom:18px}
-.tag::before{content:"";width:28px;height:2px;background:var(--red)}
-.tag::after{content:"";width:20px;height:2px;background:var(--yellow)}
-h2.section-title{font-size:clamp(23px,3.1vw,31px);font-weight:700;line-height:1.25;letter-spacing:-.5px}
+.tag::before{content:"";width:28px;height:2px;background:var(--red);animation:tagLine 2.8s ease-in-out infinite}
+.tag::after{content:"";width:20px;height:2px;background:var(--yellow);animation:tagLine 2.8s ease-in-out infinite .4s}
+@keyframes tagLine{0%,100%{transform:scaleX(1);opacity:.85}50%{transform:scaleX(1.5);opacity:1}}
+h2.section-title{font-size:clamp(23px,2.7vw,38px);font-weight:700;line-height:1.22;letter-spacing:-.7px}
 h2.section-title .y{color:var(--yellow)}
 html[data-theme="dark"] h2.section-title .y{color:var(--yellow)}
-.lead{color:var(--muted);font-size:13.5px;line-height:1.8;margin:18px 0 26px;max-width:340px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.lead{color:var(--muted);font-size:14.5px;line-height:1.85;margin:18px 0 26px;max-width:560px}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(16px,1.6vw,26px)}
 .card{
   background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);position:relative;
   display:flex;flex-direction:column;isolation:isolate;
@@ -348,9 +355,16 @@ html[data-theme="dark"] h2.section-title .y{color:var(--yellow)}
 }
 .card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
 .card:hover::before{opacity:1}
+.card::after{
+  content:"";position:absolute;top:0;left:-65%;width:45%;height:100%;z-index:3;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);
+}
+html[data-theme="dark"] .card::after{background:linear-gradient(100deg,transparent,rgba(255,255,255,.13),transparent)}
+.card:hover::after{animation:cardShine .95s cubic-bezier(.3,.7,.4,1)}
+@keyframes cardShine{0%{left:-65%;opacity:1}100%{left:125%;opacity:0}}
 html[data-theme="dark"] .card{border:1px solid var(--border);box-shadow:none}
 html[data-theme="dark"] .card:hover{border-color:transparent;box-shadow:0 26px 60px rgba(225,27,34,.16)}
-.card .thumb{position:relative;height:138px;overflow:hidden}
+.card .thumb{position:relative;height:170px;overflow:hidden}
 .card .thumb .im{
   position:absolute;inset:0;background-size:cover;background-position:center top;
   transform:scale(1);transition:transform .8s cubic-bezier(.2,.8,.3,1),filter .4s ease;
@@ -363,20 +377,28 @@ html[data-theme="dark"] .card:hover{border-color:transparent;box-shadow:0 26px 6
 .card:hover .thumb::after{opacity:.2}
 html[data-theme="dark"] .card .thumb .im{filter:brightness(.82) saturate(1.12)}
 html[data-theme="dark"] .card:hover .thumb .im{filter:brightness(1) saturate(1.2)}
-.card .body{padding:30px 18px 6px;position:relative;flex:1}
+.card .body{padding:34px 22px 8px;position:relative;flex:1}
 .card .cicon{
-  position:absolute;top:-21px;left:18px;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
+  position:absolute;top:-23px;left:22px;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
   color:#fff;font-size:16px;z-index:4;box-shadow:0 10px 22px rgba(0,0,0,.22);
   transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease;
 }
-.card:hover .cicon{transform:translateY(-4px) rotate(-8deg) scale(1.08)}
+.card .cicon{animation:iconFloat 3.4s ease-in-out infinite}
+.cards .card:nth-child(2) .cicon{animation-delay:.45s}
+.cards .card:nth-child(3) .cicon{animation-delay:.9s}
+.cards .card:nth-child(4) .cicon{animation-delay:1.35s}
+.cards .card:nth-child(5) .cicon{animation-delay:1.8s}
+@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.card:hover .cicon{animation:none;transform:translateY(-5px) rotate(-8deg) scale(1.1)}
 .ci-red{background:var(--red)}
 .ci-yellow{background:var(--yellow);color:#111}
 html[data-theme="dark"] .card .cicon{background:rgba(225,27,34,.12);border:1.5px solid var(--red);color:var(--red);box-shadow:none}
 html[data-theme="dark"] .card .cicon.ci-yellow{background:rgba(245,182,13,.12);border-color:var(--yellow);color:var(--yellow)}
-.card h3{font-size:17px;font-weight:700;margin-bottom:10px}
-.card p{font-size:12.5px;color:var(--muted);line-height:1.75}
-.more{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;margin:16px 18px 20px;position:relative}
+.cnum{position:absolute;top:12px;right:20px;font-size:30px;font-weight:800;letter-spacing:-1.5px;color:var(--text);opacity:.11;line-height:1;pointer-events:none;transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.3,1)}
+.card:hover .cnum{opacity:.2;transform:translateY(-3px)}
+.card h3{font-size:18.5px;font-weight:700;margin-bottom:11px}
+.card p{font-size:13.2px;color:var(--muted);line-height:1.8}
+.more{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;margin:18px 22px 24px;position:relative}
 .more i{transition:transform .35s cubic-bezier(.2,.8,.3,1)}
 .more::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1.5px;background:currentColor;transition:right .4s cubic-bezier(.2,.8,.3,1)}
 .card:hover .more::after{right:0}
@@ -386,7 +408,7 @@ html[data-theme="dark"] .card .cicon.ci-yellow{background:rgba(245,182,13,.12);b
 html[data-theme="dark"] .more.dark{color:var(--yellow)}
 
 /* =================== MISSION =================== */
-.mission{background:var(--bg-soft);padding:58px 0;position:relative;overflow:hidden}
+.mission{background:var(--bg-soft);padding:clamp(52px,6vw,84px) 0;position:relative;overflow:hidden}
 .mission-bg{position:absolute;inset:0;background:url('assets/Casque.png') center/cover;opacity:.04;filter:grayscale(1) contrast(.85);transition:opacity .4s ease}
 html[data-theme="dark"] .mission{background:#000}
 html[data-theme="dark"] .mission-bg{opacity:1;filter:none}
@@ -399,12 +421,32 @@ html[data-theme="dark"] .mission-bg::after{opacity:1;background:linear-gradient(
 .mission h2 .y{color:var(--yellow)}
 .mission .brush2{width:200px;height:11px;margin-top:16px;background:linear-gradient(90deg,var(--yellow),var(--yellow-2));border-radius:50%;transform:skewX(-14deg)}
 html[data-theme="dark"] .mission .brush2{background:linear-gradient(90deg,var(--red),#ff6a6f)}
-.mission-items{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.mission-items{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
 .mi{padding:0 22px;border-right:1px solid var(--border);font-size:12.5px;color:var(--muted);line-height:1.75;transition:transform .4s cubic-bezier(.2,.8,.3,1)}
 .mi:last-child{border-right:none}
 .mi:hover{transform:translateY(-5px)}
-.mi .mic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:16px;margin-bottom:16px;
-  transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.mi .mic{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;color:#fff;margin-bottom:16px;
+  font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;letter-spacing:-1px;
+  transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease}
+.mi .mic.ci-red{box-shadow:0 10px 24px rgba(225,27,34,.26)}
+.mi .mic.ci-yellow{box-shadow:0 10px 24px rgba(245,182,13,.26)}
+html[data-theme="dark"] .mi .mic{box-shadow:none}
+.mi strong{display:block;color:var(--text);font-size:15px;font-weight:700;margin-bottom:5px;letter-spacing:-.2px}
+.mi em{display:block;font-style:normal;font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--red);margin-bottom:9px}
+html[data-theme="dark"] .mi em{color:var(--yellow)}
+/* bandeau des valeurs */
+.values{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
+.values span{
+  display:inline-flex;align-items:center;gap:9px;padding:10px 18px;border-radius:999px;
+  font-size:12.5px;font-weight:600;color:var(--text);
+  background:var(--card);border:1px solid var(--border);
+  transition:transform .4s cubic-bezier(.2,.8,.3,1),border-color .3s ease,box-shadow .3s ease;
+}
+.values span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red)}
+.values span:nth-child(even)::before{background:var(--yellow)}
+.values span:hover{transform:translateY(-4px);border-color:var(--red);box-shadow:0 12px 26px rgba(0,0,0,.08)}
+html[data-theme="dark"] .values span{background:rgba(255,255,255,.04)}
+html[data-theme="dark"] .values span:hover{border-color:var(--yellow);box-shadow:none}
 .mi:hover .mic{transform:rotate(-8deg) scale(1.08)}
 .mi b{color:var(--text);font-weight:600}
 html[data-theme="dark"] .mi .mic{background:rgba(225,27,34,.12)!important;border:1.5px solid var(--red);color:var(--red)}
@@ -414,6 +456,7 @@ html[data-theme="dark"] .mi b{color:#fff}
 
 /* =================== ACADEMIE =================== */
 .academie{display:grid;grid-template-columns:1fr 1.25fr .95fr;gap:0;background:var(--bg);align-items:stretch}
+.academie>*{min-width:0}
 .aca-photo{position:relative;min-height:300px;background-image:var(--aca-img);background-size:cover;background-position:center;overflow:hidden}
 .aca-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.45))}
 html[data-theme="dark"] .aca-photo::after{background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.6))}
@@ -427,6 +470,17 @@ html[data-theme="dark"] .tag-sm::before{background:var(--yellow)}
 .aca-mid h2{font-size:clamp(21px,2.8vw,28px);font-weight:700;line-height:1.3}
 .aca-mid h2 .y{color:var(--yellow)}
 .aca-mid p{color:var(--muted);font-size:13.4px;line-height:1.85;margin-top:16px;max-width:440px}
+.aca-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(102px,1fr));gap:12px;margin-top:26px;max-width:520px}
+.aca-stats .st{
+  display:flex;flex-direction:column;gap:2px;padding:12px 10px;border-radius:14px;text-align:center;align-items:center;min-width:0;
+  background:var(--bg-alt);border:1px solid var(--border);
+  transition:transform .4s cubic-bezier(.2,.8,.3,1),border-color .3s ease;
+}
+.aca-stats .st:hover{transform:translateY(-4px);border-color:var(--red)}
+.aca-stats b{font-size:20px;font-weight:800;letter-spacing:-.5px;color:var(--red)}
+html[data-theme="dark"] .aca-stats b{color:var(--yellow)}
+html[data-theme="dark"] .aca-stats .st{background:rgba(255,255,255,.04)}
+.aca-stats span{font-size:9.6px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:var(--muted)}
 .instruments{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px}
 .inst{text-align:center;font-size:11.5px;font-weight:600;transition:transform .4s cubic-bezier(.2,.8,.3,1)}
 .inst:hover{transform:translateY(-6px)}
@@ -449,36 +503,6 @@ html[data-theme="dark"] .side-list i{color:var(--yellow)}
 .dark-script{font-family:'Caveat',cursive;font-size:clamp(25px,3.4vw,31px);line-height:1.1;color:var(--text);margin-bottom:22px}
 .dark-script em{font-style:normal;color:var(--yellow);border-bottom:6px solid rgba(245,182,13,.4)}
 
-/* =================== CTA =================== */
-.cta{position:relative;overflow:hidden;min-height:170px;display:grid;place-items:center;text-align:center;color:#111;
-  background:linear-gradient(90deg,#f5b60d 0%,#f7cd5a 18%,#f6e3a8 50%,#f0a93b 82%,#e8951f 100%)}
-.cta .crowd{position:absolute;inset:0;background:url('assets/Production.png') center/cover;mix-blend-mode:multiply;opacity:.22}
-.cta::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(255,255,255,.18)}
-html[data-theme="dark"] .cta::after{background:rgba(0,0,0,.58)}
-/* la marque du bandeau suit le thème : sombre sur le dégradé jaune, claire sur le noir */
-.cta .brand.on-dark{color:#111}
-.cta .brand.on-dark .brand-txt .n2{color:rgba(0,0,0,.58)}
-html[data-theme="dark"] .cta .brand.on-dark{color:#fff}
-html[data-theme="dark"] .cta .brand.on-dark .brand-txt .n2{color:rgba(255,255,255,.62)}
-html[data-theme="dark"] .cta{background:#000;color:#fff;border-top:1px solid var(--border)}
-html[data-theme="dark"] .cta .crowd{mix-blend-mode:normal;opacity:.5;filter:saturate(.95)}
-.cta-inner{position:relative;z-index:2;padding:30px 20px}
-.cta h3{font-size:clamp(17px,2.3vw,20px);font-weight:700}
-.cta .sc{font-family:'Caveat',cursive;color:var(--red);font-size:25px;margin-top:2px}
-html[data-theme="dark"] .cta .sc{color:var(--yellow)}
-.cta-meta{display:flex;flex-wrap:wrap;gap:16px 26px;justify-content:center;align-items:center;margin-top:16px;font-size:13px;font-weight:600}
-.cta-meta a{display:inline-flex;align-items:center;transition:transform .3s ease}
-.cta-meta a:hover{transform:translateY(-2px)}
-.cta-meta .sep{width:1px;height:18px;background:rgba(0,0,0,.35)}
-html[data-theme="dark"] .cta-meta .sep{background:rgba(255,255,255,.35)}
-.cta-meta i{color:var(--red);margin-right:8px}
-html[data-theme="dark"] .cta-meta i{color:var(--yellow)}
-.cta-logo{position:absolute;left:clamp(24px,5vw,60px);top:50%;transform:translateY(-50%);z-index:2}
-.cta-badge{position:absolute;right:clamp(24px,4vw,46px);top:50%;transform:translateY(-50%) rotate(-6deg);z-index:2;
-  font-family:'Caveat',cursive;font-size:19px;line-height:1.15;color:#fff;text-align:center;
-  background:#111;padding:10px 18px;border-radius:10px}
-html[data-theme="dark"] .cta-badge{background:rgba(255,255,255,.05);border:1px solid var(--border)}
-
 /* =================== FOOTER =================== */
 footer{
   position:relative;overflow:hidden;background:var(--footer-bg);color:#d7d7d7;
@@ -498,7 +522,7 @@ footer{
   mask-image:radial-gradient(ellipse at 50% 0%,#000 25%,transparent 78%);
 }
 footer .wrap{position:relative;z-index:2}
-.f-top{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding:58px 0 42px;border-bottom:1px solid rgba(255,255,255,.08)}
+.f-top{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(30px,5vw,70px);align-items:center;padding:clamp(46px,5vw,68px) 0 44px;border-bottom:1px solid rgba(255,255,255,.08)}
 .f-brand-tag{font-family:'Caveat',cursive;font-size:27px;line-height:1.15;color:#fff;margin:20px 0 14px;max-width:340px}
 .f-brand-tag em{font-style:normal;color:var(--yellow)}
 .f-eq{display:flex;align-items:flex-end;gap:5px;height:24px}
@@ -525,7 +549,7 @@ footer .wrap{position:relative;z-index:2}
 .f-note{font-size:11px;color:#8a8a8a;margin-top:12px;display:flex;align-items:center;gap:7px}
 .f-note i{color:var(--yellow)}
 
-.f-cols{display:grid;grid-template-columns:1.35fr 1fr 1fr 1.15fr;gap:34px;padding:44px 0 40px}
+.f-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:clamp(30px,3.5vw,56px);padding:48px 0 44px}
 .f-cols h4{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:#fff;font-weight:700;margin-bottom:20px;position:relative;padding-bottom:12px}
 .f-cols h4::after{content:"";position:absolute;left:0;bottom:0;width:30px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--red),var(--yellow))}
 .f-line{display:flex;gap:12px;align-items:flex-start;font-size:12px;line-height:1.75;margin-bottom:16px;color:#c3c3c3}
@@ -552,7 +576,7 @@ footer .wrap{position:relative;z-index:2}
   content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,var(--red),var(--yellow));
   transform:scale(0);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.3,1),opacity .35s ease;
 }
-.f-soc a i{position:relative;z-index:2}
+.f-soc a i,.f-soc a .ic{position:relative;z-index:2}
 .f-soc a:hover{color:#fff;transform:translateY(-5px);border-color:transparent}
 .f-soc a:hover::before{transform:scale(1);opacity:1}
 .f-handle{font-size:12.4px;color:#c3c3c3;display:flex;align-items:center;gap:8px}
@@ -563,21 +587,7 @@ footer .wrap{position:relative;z-index:2}
 }
 .f-badge .live{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.8s ease-in-out infinite}
 
-/* marquee */
-.f-marquee{position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:16px 0;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.f-track{display:flex;width:max-content;animation:marquee 26s linear infinite}
-.f-marquee:hover .f-track{animation-play-state:paused}
-.f-track span{
-  display:inline-flex;align-items:center;gap:20px;padding-right:20px;white-space:nowrap;
-  font-size:clamp(18px,2.6vw,26px);font-weight:800;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(255,255,255,.07);-webkit-text-stroke:1px rgba(255,255,255,.32);
-}
-.f-track span b{color:var(--yellow);-webkit-text-stroke:0;font-weight:800}
-.f-track span i{font-size:13px;color:var(--red);-webkit-text-stroke:0}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-.f-bottom{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;font-size:11.5px;color:#9f9f9f;padding:22px 0 26px}
+.f-bottom{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;font-size:11.5px;color:#9f9f9f;padding:24px 0 28px;border-top:1px solid rgba(255,255,255,.08)}
 .f-bottom-links{display:flex;flex-wrap:wrap;gap:18px}
 .f-bottom-links a{transition:color .28s ease}
 .f-bottom-links a:hover{color:var(--yellow)}
@@ -600,6 +610,10 @@ footer .wrap{position:relative;z-index:2}
 .fab:hover{background:var(--red-dark);transform:translateY(-4px)}
 
 /* =================== RESPONSIVE =================== */
+@media(max-width:1300px){
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .mission-items{grid-template-columns:repeat(3,1fr);gap:26px 0}
+}
 @media(max-width:1080px){
   .menu{display:none}
   .hdr-actions .hide-md{display:none}
@@ -612,7 +626,7 @@ footer .wrap{position:relative;z-index:2}
   .hero-inner{grid-template-columns:1fr;gap:28px;padding-top:30px}
   .hero-media{order:-1;height:clamp(220px,52vw,300px)}
   .hero-media::after{background:linear-gradient(0deg,rgba(0,0,0,.45),transparent 60%)}
-  .services-grid{grid-template-columns:1fr;gap:30px}
+  .services-head{grid-template-columns:1fr;gap:22px;align-items:start;margin-bottom:30px}
   .lead{max-width:none}
   .mission-grid{grid-template-columns:1fr;gap:26px}
   .mission-items{grid-template-columns:repeat(2,1fr);gap:26px 22px}
@@ -624,7 +638,6 @@ footer .wrap{position:relative;z-index:2}
   .aca-photo{min-height:240px}
   html[data-theme="dark"] .aca-side{border-left:none;border-top:1px solid var(--border)}
   .cards{grid-template-columns:repeat(2,1fr)}
-  .cta-logo,.cta-badge{display:none}
   .f-top{grid-template-columns:1fr;gap:30px;padding:48px 0 36px}
 }
 @media(max-width:700px){
@@ -639,8 +652,6 @@ footer .wrap{position:relative;z-index:2}
   .instruments{gap:16px}
   .inst{flex:1 1 calc(33.333% - 16px)}
   .mission-items{grid-template-columns:1fr}
-  .cta-meta{flex-direction:column;gap:10px}
-  .cta-meta .sep{display:none}
 }
 @media(max-width:400px){
   .brand-txt .n1{letter-spacing:2px}
@@ -659,6 +670,16 @@ footer .wrap{position:relative;z-index:2}
 </style>
 </head>
 <body>
+<!-- Jeu d'icônes sociales embarqué : affichage garanti même si le CDN est bloqué -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<symbol id="ic-ig" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06z"/><path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/><circle cx="18.406" cy="5.594" r="1.44"/></symbol>
+<symbol id="ic-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M20.463 3.488A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413zm-8.412 18.297h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884z"/></symbol>
+<symbol id="ic-yt" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+<symbol id="ic-tt" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+<symbol id="ic-moon" viewBox="0 0 24 24"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.6 8.6 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05z"/></symbol>
+<symbol id="ic-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zM17 18.4l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zM1 11h3v2H1v-2zm19 0h3v2h-3v-2zM4.9 20.5l-1.4-1.4 2.1-2.1 1.4 1.4-2.1 2.1zM18.4 7l-1.4-1.4 2.1-2.1 1.4 1.4L18.4 7z"/></symbol>
+<symbol id="ic-fb" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+</svg>
 <div class="progress"><span id="progressBar"></span></div>
 
 <!-- ======================= HEADER ======================= -->
@@ -669,18 +690,19 @@ footer .wrap{position:relative;z-index:2}
 <span class="brand-txt"><span class="n1">REATM</span><span class="n2">RECORDS</span></span>
 </a>
 <ul class="menu">
-<li><a class="active" data-spy="top" href="#top">Accueil</a></li>
-<li><a data-spy="services" href="#services">Nos services</a></li>
-<li><a data-spy="academie" href="#academie">Académie</a></li>
+<li><a class="active" href="#top">Accueil</a></li>
+<li><a href="#services">Nos services</a></li>
+<li><a href="#academie">Académie</a></li>
 <li><a href="#services">Studio</a></li>
-<li><a data-spy="mission" href="#mission">Production</a></li>
+<li><a href="#mission">Production</a></li>
 <li><a href="#services">Store</a></li>
-<li><a data-spy="contact" href="#contact">Contact</a></li>
+<li><a href="#services">Events</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 <div class="hdr-actions">
-<button class="icon-btn" id="themeToggle" title="Changer de thème" aria-label="Changer de thème"><i class="fas fa-moon"></i></button>
-<a class="icon-btn hide-md" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-<a class="icon-btn hide-md" href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button class="icon-btn" id="themeToggle" title="Changer de thème" aria-label="Changer de thème"><svg class="ic" id="themeIcon"><use href="#ic-moon"></use></svg></button>
+<a class="icon-btn hide-md" href="#" aria-label="Instagram"><svg class="ic"><use href="#ic-ig"></use></svg></a>
+<a class="icon-btn hide-md" href="#" aria-label="WhatsApp"><svg class="ic"><use href="#ic-wa"></use></svg></a>
 <a class="btn btn-red hide-md" href="#contact">Nous contacter <i class="fas fa-arrow-right"></i></a>
 <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
 <span class="burger-box"><span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span></span>
@@ -694,20 +716,21 @@ footer .wrap{position:relative;z-index:2}
 <div class="mnav-inner">
 <span class="mnav-label">Menu</span>
 <ul class="mnav-list">
-<li style="--i:0"><a class="active" data-spy="top" href="#top"><span>Accueil</span><span class="num">01</span></a></li>
-<li style="--i:1"><a data-spy="services" href="#services"><span>Nos services</span><span class="num">02</span></a></li>
-<li style="--i:2"><a data-spy="academie" href="#academie"><span>Académie</span><span class="num">03</span></a></li>
+<li style="--i:0"><a class="active" href="#top"><span>Accueil</span><span class="num">01</span></a></li>
+<li style="--i:1"><a href="#services"><span>Nos services</span><span class="num">02</span></a></li>
+<li style="--i:2"><a href="#academie"><span>Académie</span><span class="num">03</span></a></li>
 <li style="--i:3"><a href="#services"><span>Studio</span><span class="num">04</span></a></li>
-<li style="--i:4"><a data-spy="mission" href="#mission"><span>Production</span><span class="num">05</span></a></li>
+<li style="--i:4"><a href="#mission"><span>Production</span><span class="num">05</span></a></li>
 <li style="--i:5"><a href="#services"><span>Store</span><span class="num">06</span></a></li>
-<li style="--i:6"><a data-spy="contact" href="#contact"><span>Contact</span><span class="num">07</span></a></li>
+<li style="--i:6"><a href="#services"><span>Events</span><span class="num">07</span></a></li>
+<li style="--i:7"><a href="#contact"><span>Contact</span><span class="num">08</span></a></li>
 </ul>
 <div class="mnav-foot">
 <div class="mnav-soc">
-<a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-<a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-<a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+<a href="#" aria-label="Instagram"><svg class="ic"><use href="#ic-ig"></use></svg></a>
+<a href="#" aria-label="WhatsApp"><svg class="ic"><use href="#ic-wa"></use></svg></a>
+<a href="#" aria-label="YouTube"><svg class="ic"><use href="#ic-yt"></use></svg></a>
+<a href="#" aria-label="TikTok"><svg class="ic"><use href="#ic-tt"></use></svg></a>
 </div>
 <a class="btn btn-red" href="#contact">Nous contacter <i class="fas fa-arrow-right"></i></a>
 <div class="mnav-contact">
@@ -743,59 +766,79 @@ footer .wrap{position:relative;z-index:2}
 <div class="f reveal" style="--d:80ms"><i class="fas fa-microphone"></i> Enregistrement &amp; répétition</div>
 <div class="f reveal" style="--d:160ms"><i class="fas fa-wave-square"></i> Production artistique</div>
 <div class="f reveal" style="--d:240ms"><i class="fas fa-guitar"></i> Location de matériel</div>
+<div class="f reveal" style="--d:320ms"><i class="far fa-calendar-alt"></i> Événementiel</div>
 </div>
 </div>
 </section>
 
 <!-- ======================= SERVICES ======================= -->
 <section class="services" id="services">
-<div class="wrap services-grid">
+<div class="wrap">
+<div class="services-head">
 <div>
 <div class="tag reveal">Nos services</div>
-<h2 class="section-title reveal" style="--d:60ms">4 pôles, une seule<br/>vision : <span class="y">votre réussite</span></h2>
-<p class="lead reveal" style="--d:120ms">De la formation à la scène, en passant par l'enregistrement et la production, REATM RECORDS vous accompagne à chaque étape de votre parcours musical.</p>
+<h2 class="section-title reveal" style="--d:60ms">5 pôles, une seule vision :<br/><span class="y">votre réussite</span></h2>
+</div>
+<div>
+<p class="lead reveal" style="--d:120ms">Studio, Académie, Production, Store, Events : cinq entités complémentaires qui répondent à chacun de vos besoins, de la première leçon jusqu'à la scène.</p>
 <a class="btn btn-yellow reveal" style="--d:180ms" href="#contact">Découvrir tous nos services <i class="fas fa-arrow-right"></i></a>
+</div>
 </div>
 <div class="cards">
 
-<article class="card reveal" style="--d:0ms" data-tilt>
-<div class="thumb"><div class="im" style="background-image:url('assets/Academie (2).png')"></div></div>
-<div class="body">
-<div class="cicon ci-red"><i class="fas fa-graduation-cap"></i></div>
-<h3>Académie</h3>
-<p>Formations musicales pour développer votre talent et faire de votre passion un métier.</p>
-</div>
-<a class="more red" href="#academie">En savoir plus <i class="fas fa-arrow-right"></i></a>
-</article>
-
-<article class="card reveal" style="--d:110ms" data-tilt>
+<article class="card reveal reveal-card" style="--d:0ms" data-tilt>
 <div class="thumb"><div class="im" style="background-image:url('assets/Studo.png')"></div></div>
 <div class="body">
-<div class="cicon ci-yellow"><i class="fas fa-microphone"></i></div>
-<h3>Studio</h3>
-<p>Enregistrement, mixage, mastering et répétition dans un espace professionnel.</p>
+<div class="cicon ci-red"><i class="fas fa-microphone"></i></div>
+<span class="cnum">01</span>
+<h3>REATM Studio</h3>
+<p>Enregistrement, arrangement, mixage et mastering — plus un espace de répétition avec tous les instruments à votre disposition.</p>
 </div>
-<a class="more dark" href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+<a class="more red" href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
 </article>
 
-<article class="card reveal" style="--d:220ms" data-tilt>
-<div class="thumb"><div class="im" style="background-image:url('assets/Production.png');background-position:center 40%"></div></div>
+<article class="card reveal reveal-card" style="--d:100ms" data-tilt>
+<div class="thumb"><div class="im" style="background-image:url('assets/Academie (2).png')"></div></div>
+<div class="body">
+<div class="cicon ci-yellow"><i class="fas fa-graduation-cap"></i></div>
+<span class="cnum">02</span>
+<h3>REATM Academy</h3>
+<p>Centre de formation musicale et média : chant, piano, guitare, batterie, et les outils de création de contenu.</p>
+</div>
+<a class="more dark" href="#academie">En savoir plus <i class="fas fa-arrow-right"></i></a>
+</article>
+
+<article class="card reveal reveal-card" style="--d:200ms" data-tilt>
+<div class="thumb"><div class="im" style="background-image:url('assets/Casque.png')"></div></div>
 <div class="body">
 <div class="cicon ci-red"><i class="fas fa-wave-square"></i></div>
-<h3>Production</h3>
-<p>Unir les talents pour créer des projets uniques et ambitieux.</p>
+<span class="cnum">03</span>
+<h3>REATM Prod</h3>
+<p>La cuisine de la maison : podcasts, émissions, programmes de prières, courts métrages et contenus musicaux.</p>
 </div>
 <a class="more red" href="#mission">En savoir plus <i class="fas fa-arrow-right"></i></a>
 </article>
 
-<article class="card reveal" style="--d:330ms" data-tilt>
+<article class="card reveal reveal-card" style="--d:300ms" data-tilt>
 <div class="thumb"><div class="im" style="background-image:url('assets/Store.png')"></div></div>
 <div class="body">
 <div class="cicon ci-yellow"><i class="fas fa-shopping-bag"></i></div>
-<h3>Store</h3>
-<p>Location de matériel et d'instruments pour vos sessions et événements.</p>
+<span class="cnum">04</span>
+<h3>REATM Store</h3>
+<p>Location, achat et vente d'instruments de musique et de matériel de sonorisation, pour amateurs comme professionnels.</p>
 </div>
 <a class="more dark" href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+</article>
+
+<article class="card reveal reveal-card" style="--d:400ms" data-tilt>
+<div class="thumb"><div class="im" style="background-image:url('assets/Production.png');background-position:center 45%"></div></div>
+<div class="body">
+<div class="cicon ci-red"><i class="far fa-calendar-alt"></i></div>
+<span class="cnum">05</span>
+<h3>REATM Events</h3>
+<p>Concerts, conférences, séminaires, mariages : une couverture large et complète de votre événement.</p>
+</div>
+<a class="more red" href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
 </article>
 
 </div>
@@ -808,16 +851,21 @@ footer .wrap{position:relative;z-index:2}
 <div class="wrap">
 <div class="mission-grid">
 <div>
-<div class="tag reveal">Notre mission</div>
-<h2 class="reveal" style="--d:60ms">Former – <span class="y">Produire</span> –<br/>Accompagner</h2>
+<div class="tag reveal">Nos missions</div>
+<h2 class="reveal" style="--d:60ms">Promouvoir la <span class="y">musique</span>,<br/>partager l'Évangile</h2>
 <div class="brush2 reveal" style="--d:120ms"></div>
+<p class="lead reveal" style="--d:160ms">Cinq lettres, cinq mouvements : REATM porte son nom comme une feuille de route.</p>
 </div>
 <div class="mission-items">
-<div class="mi reveal" style="--d:0ms"><div class="mic ci-red"><i class="fas fa-graduation-cap"></i></div><div><b>Des formations</b> pour transformer votre <b>passion</b> en profession</div></div>
-<div class="mi reveal" style="--d:100ms"><div class="mic ci-yellow y"><i class="fas fa-microphone"></i></div><div><b>Un studio</b> pour donner vie à vos projets</div></div>
-<div class="mi reveal" style="--d:200ms"><div class="mic ci-red"><i class="fas fa-wave-square"></i></div><div>Une production qui <b>rassemble</b> des talents d'ici et d'ailleurs</div></div>
-<div class="mi reveal" style="--d:300ms"><div class="mic ci-yellow y"><i class="fas fa-cog"></i></div><div>Des équipements à la disposition de tous</div></div>
+<div class="mi reveal" style="--d:0ms"><div class="mic ci-red">R</div><div><em>Recording</em><strong>Enregistrer</strong>Capter le son juste, dans des conditions professionnelles.</div></div>
+<div class="mi reveal" style="--d:90ms"><div class="mic ci-yellow y">E</div><div><em>Exposition</em><strong>Exposer</strong>Donner de la lumière aux talents et à leurs projets.</div></div>
+<div class="mi reveal" style="--d:180ms"><div class="mic ci-red">A</div><div><em>Assert</em><strong>Affirmer</strong>Poser une identité artistique claire et assumée.</div></div>
+<div class="mi reveal" style="--d:270ms"><div class="mic ci-yellow y">T</div><div><em>Touch</em><strong>Toucher</strong>Atteindre les cœurs, bien au-delà des oreilles.</div></div>
+<div class="mi reveal" style="--d:360ms"><div class="mic ci-red">M</div><div><em>Move</em><strong>Mouvoir</strong>Mettre en mouvement ceux qui écoutent.</div></div>
 </div>
+</div>
+<div class="values reveal" style="--d:200ms">
+<span>Diligence</span><span>Excellence</span><span>Amour</span><span>Foi</span><span>Autonomie</span>
 </div>
 </div>
 </section>
@@ -828,9 +876,15 @@ footer .wrap{position:relative;z-index:2}
 <div class="sc">Chaque voix<br/>a sa place</div>
 </div>
 <div class="aca-mid">
-<div class="tag-sm reveal">REATM Académie</div>
+<div class="tag-sm reveal">REATM Academy</div>
 <h2 class="reveal" style="--d:60ms">Votre talent mérite<br/>le bon <span class="y">accompagnement</span></h2>
-<p class="reveal" style="--d:120ms">Chant, instruments, technique vocale… Nos cours sont conçus pour vous aider à progresser à votre rythme, avec un suivi personnalisé.</p>
+<p class="reveal" style="--d:120ms">Centre de formation en musique et en média. En chant, on travaille la texture vocale, la justesse, le souffle, la puissance et les harmonies. Côté instruments : batterie, piano, guitare, guitare basse et guitare solo.</p>
+<div class="aca-stats">
+<div class="st reveal" style="--d:140ms"><b>04</b><span>formations</span></div>
+<div class="st reveal" style="--d:200ms"><b>03</b><span>niveaux</span></div>
+<div class="st reveal" style="--d:260ms"><b>02</b><span>sessions</span></div>
+<div class="st reveal" style="--d:320ms"><b>1h30</b><span>par séance</span></div>
+</div>
 <div class="instruments">
 <div class="inst reveal" style="--d:0ms"><div class="ib"><i class="fas fa-microphone-alt"></i></div>Chant</div>
 <div class="inst reveal" style="--d:70ms"><div class="ib"><i class="fas fa-grip-lines-vertical"></i></div>Piano</div>
@@ -843,29 +897,14 @@ footer .wrap{position:relative;z-index:2}
 <div class="dark-script only-dark">Transformez votre<br/>passion en<br/><em>profession</em></div>
 <div class="side-title only-light"><span>Des cours pour tous<br/><u>les niveaux</u></span></div>
 <ul class="side-list">
-<li class="only-light"><i class="fas fa-music"></i><span>Un accompagnement personnalisé pour chaque élève</span></li>
-<li class="only-light"><i class="fas fa-music"></i><span><b>On travaille la texture vocale,</b><br/><span class="m">la justesse, le souffle, la puissance, les harmonies etc…</span></span></li>
-<li><i class="far fa-clock"></i><span>1h30 / séance&nbsp; | &nbsp;<b>1 séance / semaine</b><br/>4 séances / mois</span></li>
-<li><i class="far fa-calendar-alt"></i><span><b>Mercredi, Jeudi, Samedi (à partir de 19h)</b><br/>Dimanche (à partir de 18h)</span></li>
+<li><i class="fas fa-layer-group"></i><span><b>Trois niveaux</b><br/><span class="m">Débutant C3 (3 à 6 mois) · Intermédiaire C2 (3 à 6 mois) · Avancé C1 (3 mois)</span></span></li>
+<li><i class="far fa-clock"></i><span><b>Session normale</b><br/><span class="m">1 séance / semaine — 4 séances / mois</span></span></li>
+<li><i class="fas fa-bolt"></i><span><b>Session accélérée</b><br/><span class="m">2 à 3 séances / semaine — 8 à 12 séances / mois</span></span></li>
+<li><i class="far fa-calendar-alt"></i><span><b>Mercredi, Jeudi, Samedi (à partir de 19h)</b><br/><span class="m">Dimanche (à partir de 18h)</span></span></li>
+<li><i class="fas fa-photo-video"></i><span><b>Formations média</b><br/><span class="m">Photoshop, Canva, CapCut, montage vidéo, traitement photo</span></span></li>
 </ul>
 <a class="btn btn-red" href="#contact">S'inscrire dès aujourd'hui <i class="fas fa-arrow-right"></i></a>
 </aside>
-</section>
-
-<!-- ======================= CTA ======================= -->
-<section class="cta">
-<div class="crowd"></div>
-<div class="cta-logo brand on-dark" style="--lm:56px"><span class="brand-mark"></span><span class="brand-txt"><span class="n1">REATM</span><span class="n2">RECORDS</span></span></div>
-<div class="cta-inner">
-<h3>Rejoignez la famille REATM RECORDS</h3>
-<div class="sc">Faire grandir vos talents</div>
-<div class="cta-meta">
-<a href="tel:+212651475341"><i class="fas fa-phone-alt"></i>+212 06 51 47 53 41</a>
-<span class="sep"></span>
-<a href="#"><i class="fab fa-instagram"></i>@REATMRECORDS</a>
-</div>
-</div>
-<div class="cta-badge">Plus qu'un studio,<br/>une famille !</div>
 </section>
 
 <!-- ======================= FOOTER ======================= -->
@@ -877,7 +916,7 @@ footer .wrap{position:relative;z-index:2}
 <div class="f-top">
 <div>
 <div class="brand on-dark reveal" style="--lm:64px"><span class="brand-mark"></span><span class="brand-txt"><span class="n1">REATM</span><span class="n2">RECORDS</span></span></div>
-<div class="f-brand-tag reveal" style="--d:80ms">La musique au service<br/>de <em>vos rêves</em></div>
+<div class="f-brand-tag reveal" style="--d:80ms">Promouvoir la musique,<br/>partager <em>l'Évangile</em></div>
 <div class="f-eq reveal" style="--d:140ms" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 <div class="f-badge reveal" style="--d:200ms"><span class="live"></span> Studio ouvert du mercredi au dimanche</div>
 </div>
@@ -912,34 +951,25 @@ footer .wrap{position:relative;z-index:2}
 <div>
 <h4>Nos pôles</h4>
 <ul class="f-nav">
-<li><a href="#academie">Académie</a></li>
-<li><a href="#services">Studio d'enregistrement</a></li>
-<li><a href="#services">Répétition &amp; mixage</a></li>
-<li><a href="#mission">Production artistique</a></li>
-<li><a href="#services">Store &amp; location</a></li>
+<li><a href="#services">REATM Studio</a></li>
+<li><a href="#academie">REATM Academy</a></li>
+<li><a href="#services">REATM Prod</a></li>
+<li><a href="#services">REATM Store</a></li>
+<li><a href="#services">REATM Events</a></li>
 </ul>
 </div>
 <div>
 <h4>Suivez-nous</h4>
 <div class="f-soc">
-<a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-<a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-<a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-<a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="#" aria-label="Instagram"><svg class="ic"><use href="#ic-ig"></use></svg></a>
+<a href="#" aria-label="WhatsApp"><svg class="ic"><use href="#ic-wa"></use></svg></a>
+<a href="#" aria-label="YouTube"><svg class="ic"><use href="#ic-yt"></use></svg></a>
+<a href="#" aria-label="TikTok"><svg class="ic"><use href="#ic-tt"></use></svg></a>
+<a href="#" aria-label="Facebook"><svg class="ic"><use href="#ic-fb"></use></svg></a>
 </div>
 <div class="f-handle"><i class="fas fa-hashtag"></i>@REATMRECORDS</div>
 <div class="f-handle" style="margin-top:10px"><i class="fas fa-music"></i>Plus qu'un studio, une famille !</div>
 </div>
-</div>
-</div>
-
-<div class="f-marquee" aria-hidden="true">
-<div class="f-track">
-<span>REATM RECORDS <i class="fas fa-circle"></i> <b>FORMER</b> <i class="fas fa-circle"></i> PRODUIRE <i class="fas fa-circle"></i> <b>ACCOMPAGNER</b> <i class="fas fa-circle"></i> </span>
-<span>REATM RECORDS <i class="fas fa-circle"></i> <b>FORMER</b> <i class="fas fa-circle"></i> PRODUIRE <i class="fas fa-circle"></i> <b>ACCOMPAGNER</b> <i class="fas fa-circle"></i> </span>
-<span>REATM RECORDS <i class="fas fa-circle"></i> <b>FORMER</b> <i class="fas fa-circle"></i> PRODUIRE <i class="fas fa-circle"></i> <b>ACCOMPAGNER</b> <i class="fas fa-circle"></i> </span>
-<span>REATM RECORDS <i class="fas fa-circle"></i> <b>FORMER</b> <i class="fas fa-circle"></i> PRODUIRE <i class="fas fa-circle"></i> <b>ACCOMPAGNER</b> <i class="fas fa-circle"></i> </span>
 </div>
 </div>
 
@@ -966,11 +996,11 @@ footer .wrap{position:relative;z-index:2}
 
   /* ---------- Thème clair / sombre ---------- */
   var btn=document.getElementById('themeToggle');
-  var icon=btn.querySelector('i');
+  var icon=btn.querySelector('#themeIcon use');
   var meta=document.getElementById('metaTheme');
   function apply(t){
     root.setAttribute('data-theme',t);
-    icon.className=(t==='dark')?'fas fa-sun':'fas fa-moon';
+    icon.setAttribute('href',(t==='dark')?'#ic-sun':'#ic-moon');
     if(meta) meta.setAttribute('content',t==='dark'?'#000000':'#ffffff');
   }
   var saved='light';
@@ -1036,6 +1066,7 @@ footer .wrap{position:relative;z-index:2}
   var header=document.getElementById('header');
   var bar=document.getElementById('progressBar');
   var fab=document.getElementById('fab');
+  var heroImg=document.querySelector('.hero-media .ph');
   var ticking=false;
   function onScroll(){
     var y=window.pageYOffset||document.documentElement.scrollTop;
@@ -1043,7 +1074,7 @@ footer .wrap{position:relative;z-index:2}
     fab.classList.toggle('show',y>600);
     var h=document.documentElement.scrollHeight-window.innerHeight;
     bar.style.width=(h>0?Math.min(100,(y/h)*100):0)+'%';
-    if(typeof syncSpy==='function')syncSpy();
+    if(heroImg&&!reduce)heroImg.style.setProperty('--par',(Math.min(y,520)*0.07).toFixed(1)+'px');
     ticking=false;
   }
   window.addEventListener('scroll',function(){
@@ -1060,7 +1091,15 @@ footer .wrap{position:relative;z-index:2}
   if('IntersectionObserver' in window && !reduce){
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(en){
-        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+        if(en.isIntersecting){
+          var el=en.target;
+          el.classList.add('in');
+          io.unobserve(el);
+          if(el.classList.contains('reveal-card')){
+            var d=parseInt(getComputedStyle(el).transitionDelay,10)||0;
+            setTimeout(function(){el.classList.remove('reveal-card','reveal');},1100+Math.abs(d));
+          }
+        }
       });
     },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     items.forEach(function(el){io.observe(el);});
@@ -1081,24 +1120,6 @@ footer .wrap{position:relative;z-index:2}
       card.addEventListener('pointerleave',function(){card.style.transform='';});
     });
   }
-
-  /* ---------- Lien de navigation actif selon la section visible ---------- */
-  var spyIds=['top','services','mission','academie','contact'];
-  var spySections=spyIds.map(function(id){return document.getElementById(id);}).filter(Boolean);
-  var spyLinks=document.querySelectorAll('.menu a[data-spy],.mnav-list a[data-spy]');
-  function syncSpy(){
-    if(!spySections||!spySections.length)return;
-    var pos=(window.pageYOffset||document.documentElement.scrollTop)+140;
-    var current=spySections[0]?spySections[0].id:null;
-    spySections.forEach(function(sec){
-      if(sec.offsetTop<=pos)current=sec.id;
-    });
-    if(window.innerHeight+window.pageYOffset>=document.body.offsetHeight-4){
-      current=spySections[spySections.length-1].id;
-    }
-    spyLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('data-spy')===current);});
-  }
-  syncSpy();
 
   /* ---------- Newsletter (démo front) ---------- */
   var form=document.getElementById('newsForm');
