@@ -12,7 +12,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Caveat:wght@500;700&amp;display=swap" rel="stylesheet"/>
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('reatm-theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}</script>
-<link rel="stylesheet" href="../css/reatm.css?v=9"/>
+<link rel="stylesheet" href="../css/reatm.css?v=10"/>
 <style>
 /* ===== PRODUCTION — jaune + blanc + noir, typographie massive ===== */
 .phero{background:#050505;color:#fff}
@@ -25,18 +25,9 @@
 /* éclat jaune qui traverse le titre */
 .pr-flash{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
 .pr-flash i{position:absolute;top:-30%;left:-25%;width:26%;height:170%;transform:rotate(14deg);
-  background:linear-gradient(90deg,transparent,rgba(250,204,21,.22),transparent);
+  background:linear-gradient(90deg,transparent,rgba(250,204,21,.10),transparent);
   animation:prSweep 7s ease-in-out infinite}
 @keyframes prSweep{0%{transform:rotate(14deg) translateX(-30%)}55%,100%{transform:rotate(14deg) translateX(460%)}}
-/* bandeau défilant jaune : signature de l'entité */
-.pr-marq{background:#FACC15;color:#050505;overflow:hidden;padding:13px 0;border-top:2px solid #050505;border-bottom:2px solid #050505}
-.pr-track{display:flex;width:max-content;animation:prMarq 22s linear infinite}
-.pr-track span{display:inline-flex;align-items:center;gap:22px;padding-right:22px;white-space:nowrap;
-  font-size:clamp(14px,1.8vw,20px);font-weight:800;letter-spacing:2px;text-transform:uppercase}
-.pr-track i{font-size:9px}
-@keyframes prMarq{to{transform:translateX(-50%)}}
-.pr-marq:hover .pr-track{animation-play-state:paused}
-
 /* galerie de créations */
 .pr-gal{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,1.4vw,20px)}
 .pr-gal article{
@@ -46,13 +37,13 @@
 }
 .pr-gal article.s4{grid-column:span 4;min-height:340px}
 .pr-gal article.s3{grid-column:span 3;min-height:300px}
-.pr-gal article:hover{transform:translateY(-10px);box-shadow:0 28px 60px rgba(250,204,21,.22)}
+.pr-gal article:hover{transform:translateY(-10px);box-shadow:0 26px 56px rgba(250,204,21,.14)}
 .pr-gal .im{position:absolute;inset:0;background-size:cover;background-position:center;
   transform:scale(1.02);filter:grayscale(1) contrast(1.05);
   transition:transform 1.1s cubic-bezier(.16,1,.3,1),filter .6s ease}
 .pr-gal article:hover .im{transform:scale(1.14);filter:grayscale(0) contrast(1)}
 .pr-gal .vl{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.1),rgba(5,5,5,.85));z-index:2}
-.pr-gal .lt{position:absolute;inset:0;z-index:3;opacity:0;background:linear-gradient(140deg,rgba(250,204,21,.34),transparent 62%);transition:opacity .55s ease}
+.pr-gal .lt{position:absolute;inset:0;z-index:3;opacity:0;background:linear-gradient(140deg,rgba(250,204,21,.20),transparent 62%);transition:opacity .55s ease}
 .pr-gal article:hover .lt{opacity:1}
 .pr-gal .info{position:absolute;left:20px;right:20px;bottom:18px;z-index:4;color:#fff}
 .pr-gal .cat{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FACC15;display:block;margin-bottom:8px;
@@ -63,18 +54,24 @@
 .pr-gal article:hover .yr{color:#FACC15}
 /* lignes qui se construisent */
 .pr-build{display:flex;flex-direction:column;gap:7px;margin-top:22px}
-.pr-build i{height:4px;border-radius:4px;background:#FACC15;width:14%;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.pr-build i{height:3px;opacity:.75;border-radius:4px;background:#FACC15;width:14%;transition:width 1s cubic-bezier(.16,1,.3,1)}
 .pr-build.in i:nth-child(1){width:100%}
 .pr-build.in i:nth-child(2){width:72%;transition-delay:.12s}
 .pr-build.in i:nth-child(3){width:46%;transition-delay:.24s}
-.pr-kitchen{background:#FACC15;color:#050505}
-.pr-kitchen .sec-title,.pr-kitchen .sec-lead{color:#050505}
-.pr-kitchen .sec-lead{color:rgba(5,5,5,.72)}
-.pr-kitchen .sec-num{-webkit-text-stroke-color:#050505}
-.pr-kitchen .pcard{background:rgba(255,255,255,.55);border-color:rgba(5,5,5,.18)}
-.pr-kitchen .pcard p{color:rgba(5,5,5,.7)}
-.pr-kitchen .pcard .tagline{color:#050505}
-.pr-kitchen .pcard:hover{border-color:#050505;box-shadow:0 24px 50px rgba(5,5,5,.2)}
+.pr-kitchen{background:#FEFCE8;color:#111111}
+html[data-theme="dark"] .pr-kitchen{background:#111005}
+.pr-kitchen .sec-title{color:#111111}
+html[data-theme="dark"] .pr-kitchen .sec-title{color:#fff}
+.pr-kitchen .sec-lead{color:#5b5b52}
+html[data-theme="dark"] .pr-kitchen .sec-lead{color:#8A8A8A}
+.pr-kitchen .sec-num{-webkit-text-stroke-color:rgba(202,158,10,.7)}
+.pr-kitchen .pcard{background:#fff;border-color:#EDE4BE}
+html[data-theme="dark"] .pr-kitchen .pcard{background:#17160a;border-color:#2b2814}
+.pr-kitchen .pcard p{color:#5b5b52}
+html[data-theme="dark"] .pr-kitchen .pcard p{color:#8A8A8A}
+.pr-kitchen .pcard .tagline{color:#9a7a05}
+html[data-theme="dark"] .pr-kitchen .pcard .tagline{color:#FACC15}
+.pr-kitchen .pcard:hover{border-color:#FACC15;box-shadow:0 24px 50px rgba(250,204,21,.18)}
 .pr-cta{background:#050505;color:#fff}
 .pr-cta h2 em{font-style:normal;color:#FACC15}
 @media(max-width:1080px){.pr-gal{grid-template-columns:repeat(4,1fr)}.pr-gal article,.pr-gal article.s4,.pr-gal article.s3{grid-column:span 2;min-height:250px}}
@@ -161,13 +158,11 @@
 <div class="pr-flash" aria-hidden="true"><i></i></div>
 <div class="wrap phero-inner">
 <a class="crumbs" href="../#services"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>Tous nos pôles</a>
-<h1 class="reveal">Ideas<br/>into <em>creation.</em></h1>
+<h1 class="reveal">L'idée<br/>devient <em>création.</em></h1>
 <p class="sub reveal" style="--d:100ms">L'espace créatif de REATM. La cuisine de la maison, là où les idées deviennent des formats — la REATM Home Kitchen.</p>
 <div class="pr-build" id="prBuild" aria-hidden="true"><i></i><i></i><i></i></div>
 </div>
 </section>
-
-<div class="pr-marq" aria-hidden="true"><div class="pr-track"><span>REATM HOME KITCHEN <i class="fas fa-circle"></i> IDEAS INTO CREATION <i class="fas fa-circle"></i> </span><span>REATM HOME KITCHEN <i class="fas fa-circle"></i> IDEAS INTO CREATION <i class="fas fa-circle"></i> </span><span>REATM HOME KITCHEN <i class="fas fa-circle"></i> IDEAS INTO CREATION <i class="fas fa-circle"></i> </span><span>REATM HOME KITCHEN <i class="fas fa-circle"></i> IDEAS INTO CREATION <i class="fas fa-circle"></i> </span></div></div>
 
 <section class="sec">
 <div class="wrap">
@@ -276,7 +271,7 @@
 
 
 <button class="fab" id="fab" aria-label="Revenir en haut"><i class="fas fa-arrow-up"></i></button>
-<script src="../js/reatm.js?v=9"></script>
+<script src="../js/reatm.js?v=10"></script>
 <script>
 (function(){
   var el=document.getElementById('prBuild');
