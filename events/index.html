@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#ffffff" id="metaTheme"/>
+<meta name="description" content="REATM Events : concerts, conférences, séminaires, mariages, anniversaires et soirées. Nous donnons vie à vos événements."/>
+<title>REATM Events — REATM RECORDS</title>
+<link rel="icon" href="../assets/logo.png"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Caveat:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('reatm-theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}</script>
+<link rel="stylesheet" href="../css/reatm.css"/>
+<style>
+/* ===== EVENTS — la scène : noir, blanc, lumière ===== */
+.phero{background:#050505;color:#fff;min-height:82vh;display:flex;align-items:flex-end}
+.phero-bg{background-image:url('../assets/production.png');background-position:center 45%;opacity:.55;transform:scale(1.05);animation:evKen 26s ease-in-out infinite alternate}
+@keyframes evKen{to{transform:scale(1.16)}}
+.phero-veil{background:linear-gradient(0deg,#050505 10%,rgba(5,5,5,.6) 48%,rgba(5,5,5,.25) 100%)}
+.phero h1{letter-spacing:-3.5px}
+.phero h1 em{color:#FFE3B8}
+.phero .sub{color:rgba(255,255,255,.76)}
+.phero .crumbs{color:rgba(255,255,255,.6)}
+/* projecteurs croisés */
+.ev-spots{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.ev-spots i{position:absolute;top:-70%;width:16%;height:220%;transform-origin:top center;
+  background:linear-gradient(180deg,rgba(255,235,205,.30),transparent 72%);filter:blur(2px)}
+.ev-spots i:nth-child(1){left:12%;animation:evSwing 8s ease-in-out infinite}
+.ev-spots i:nth-child(2){left:44%;animation:evSwing 11s ease-in-out infinite reverse}
+.ev-spots i:nth-child(3){left:74%;animation:evSwing 9.5s ease-in-out infinite .6s}
+@keyframes evSwing{0%,100%{transform:rotate(-13deg)}50%{transform:rotate(13deg)}}
+/* particules de scène */
+.ev-parts{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.ev-parts i{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:rgba(255,231,196,.9);
+  animation:evRise 9s linear infinite}
+@keyframes evRise{0%{transform:translateY(0) scale(.5);opacity:0}12%{opacity:1}100%{transform:translateY(-92vh) scale(1.2);opacity:0}}
+
+/* affiche : la liste des formats en très gros */
+.ev-list{border-top:1px solid rgba(255,255,255,.12)}
+.ev-list a{
+  display:flex;align-items:center;gap:clamp(14px,2.6vw,40px);position:relative;overflow:hidden;
+  padding:clamp(20px,3.2vw,38px) 6px;border-bottom:1px solid rgba(255,255,255,.12);
+  transition:padding-left .55s cubic-bezier(.16,1,.3,1),color .4s ease;
+}
+.ev-list b{flex:0 0 auto;font-size:12px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.4);min-width:34px;transition:color .4s ease}
+.ev-list h3{font-size:clamp(24px,5.2vw,64px);font-weight:800;letter-spacing:-2.4px;text-transform:uppercase;line-height:1;
+  color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.7);transition:color .45s ease,-webkit-text-stroke-color .45s ease}
+.ev-list a:hover{padding-left:clamp(10px,2vw,28px)}
+.ev-list a:hover h3{color:#fff;-webkit-text-stroke-color:#fff}
+.ev-list a:hover b{color:#FFE3B8}
+.ev-list .thumb{
+  position:absolute;right:clamp(10px,3vw,50px);top:50%;width:clamp(120px,16vw,210px);height:76%;
+  border-radius:12px;background-size:cover;background-position:center;
+  transform:translateY(-50%) scale(.82) rotate(-3deg);opacity:0;
+  transition:opacity .5s ease,transform .7s cubic-bezier(.16,1,.3,1);
+}
+.ev-list a:hover .thumb{opacity:.9;transform:translateY(-50%) scale(1) rotate(0deg)}
+.ev-dark{background:#050505;color:#fff}
+.ev-dark .sec-title{color:#fff}
+.ev-dark .sec-lead{color:rgba(255,255,255,.68)}
+.ev-dark .sec-num{-webkit-text-stroke-color:#FFE3B8}
+.ev-dark .pcard{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.14)}
+.ev-dark .pcard p{color:rgba(255,255,255,.7)}
+.ev-dark .pcard:hover{border-color:#FFE3B8;box-shadow:0 26px 54px rgba(255,205,140,.18)}
+.ev-cta{background:#050505;color:#fff;border-top:1px solid rgba(255,255,255,.1)}
+.ev-cta h2 em{font-style:normal;color:#FFE3B8}
+.ev-cta .btn-acc{background:#FFE3B8;color:#050505}
+@media(max-width:700px){.ev-list .thumb{display:none}.phero{min-height:auto}}
+</style>
+</head>
+<body data-entity="events" style="--veil-in:#050505">
+<div class="veil-in" aria-hidden="true"></div>
+<div class="veil" aria-hidden="true"></div>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<symbol id="ic-ig" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06z"/><path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/><circle cx="18.406" cy="5.594" r="1.44"/></symbol>
+<symbol id="ic-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M20.463 3.488A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413zm-8.412 18.297h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884z"/></symbol>
+<symbol id="ic-yt" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+<symbol id="ic-tt" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+<symbol id="ic-moon" viewBox="0 0 24 24"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.6 8.6 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05z"/></symbol>
+<symbol id="ic-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.5 4.9l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zM17 18.4l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zM1 11h3v2H1v-2zm19 0h3v2h-3v-2zM4.9 20.5l-1.4-1.4 2.1-2.1 1.4 1.4-2.1 2.1zM18.4 7l-1.4-1.4 2.1-2.1 1.4 1.4L18.4 7z"/></symbol>
+<symbol id="ic-fb" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+</svg>
+<div class="progress"><span id="progressBar"></span></div>
+
+<!-- ======================= HEADER ======================= -->
+<header id="header">
+<div class="wrap nav">
+<a class="brand" href="../#top" aria-label="REATM RECORDS — accueil" style="--lm:46px">
+<span class="brand-mark"></span>
+<span class="brand-txt"><span class="n1">REATM</span><span class="n2">RECORDS</span></span>
+</a>
+<ul class="menu">
+<li><a href="../#top">Accueil</a></li>
+<li><a href="../#services">Nos services</a></li>
+<li><a href="../#academie">Académie</a></li>
+<li><a href="../#services">Studio</a></li>
+<li><a href="../#mission">Production</a></li>
+<li><a href="../#services">Store</a></li>
+<li><a href="../#services">Events</a></li>
+<li><a href="../#contact">Contact</a></li>
+</ul>
+<div class="hdr-actions">
+<button class="icon-btn" id="themeToggle" title="Changer de thème" aria-label="Changer de thème"><svg class="ic" id="themeIcon"><use href="#ic-moon"></use></svg></button>
+<a class="icon-btn hide-md" href="#" aria-label="Instagram"><svg class="ic"><use href="#ic-ig"></use></svg></a>
+<a class="icon-btn hide-md" href="#" aria-label="WhatsApp"><svg class="ic"><use href="#ic-wa"></use></svg></a>
+<a class="btn btn-red hide-md" href="../#contact">Nous contacter <i class="fas fa-arrow-right"></i></a>
+<button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
+<span class="burger-box"><span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span></span>
+</button>
+</div>
+</div>
+</header>
+
+
+<!-- ======================= MENU MOBILE (plein écran) ======================= -->
+<aside class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Menu principal">
+<div class="mnav-inner">
+<span class="mnav-label">Menu</span>
+<ul class="mnav-list">
+<li style="--i:0"><a href="../#top"><span>Accueil</span><span class="num">01</span></a></li>
+<li style="--i:1"><a href="../#services"><span>Nos services</span><span class="num">02</span></a></li>
+<li style="--i:2"><a href="../#academie"><span>Académie</span><span class="num">03</span></a></li>
+<li style="--i:3"><a href="../#services"><span>Studio</span><span class="num">04</span></a></li>
+<li style="--i:4"><a href="../#mission"><span>Production</span><span class="num">05</span></a></li>
+<li style="--i:5"><a href="../#services"><span>Store</span><span class="num">06</span></a></li>
+<li style="--i:6"><a href="../#services"><span>Events</span><span class="num">07</span></a></li>
+<li style="--i:7"><a href="../#contact"><span>Contact</span><span class="num">08</span></a></li>
+</ul>
+<div class="mnav-foot">
+<div class="mnav-soc">
+<a href="#" aria-label="Instagram"><svg class="ic"><use href="#ic-ig"></use></svg></a>
+<a href="#" aria-label="WhatsApp"><svg class="ic"><use href="#ic-wa"></use></svg></a>
+<a href="#" aria-label="YouTube"><svg class="ic"><use href="#ic-yt"></use></svg></a>
+<a href="#" aria-label="TikTok"><svg class="ic"><use href="#ic-tt"></use></svg></a>
+</div>
+<a class="btn btn-red" href="../#contact">Nous contacter <i class="fas fa-arrow-right"></i></a>
+<div class="mnav-contact">
+<div><i class="fas fa-phone-alt"></i><a href="tel:+212651475341">+212 06 51 47 53 41</a></div>
+<div><i class="fas fa-envelope"></i><a href="mailto:Contact.reatm@gmail.com">Contact.reatm@gmail.com</a></div>
+</div>
+</div>
+</div>
+</aside>
+
+
+<section class="phero">
+<div class="phero-bg"></div>
+<div class="ev-spots" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="phero-veil"></div>
+<div class="ev-parts" aria-hidden="true"><i style="left:7%;animation-delay:0.0s"></i><i style="left:15%;animation-delay:0.7s"></i><i style="left:23%;animation-delay:1.4s"></i><i style="left:31%;animation-delay:2.1s"></i><i style="left:39%;animation-delay:2.8s"></i><i style="left:47%;animation-delay:3.5s"></i><i style="left:55%;animation-delay:4.2s"></i><i style="left:63%;animation-delay:4.9s"></i><i style="left:71%;animation-delay:5.6s"></i><i style="left:79%;animation-delay:6.3s"></i><i style="left:87%;animation-delay:7.0s"></i><i style="left:95%;animation-delay:7.7s"></i></div>
+<div class="wrap phero-inner">
+<a class="crumbs" href="../#services"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>Tous nos pôles</a>
+<h1 class="reveal">Make it<br/>an <em>event.</em></h1>
+<p class="sub reveal" style="--d:100ms">Nous donnons vie à vos événements. Organisation interne et prestations externes : REATM Events s'occupe de tout, de la première idée à la dernière lumière.</p>
+</div>
+</section>
+
+<section class="sec ev-dark">
+<div class="wrap">
+<div class="sec-head reveal"><span class="sec-num">01</span><div><h2 class="sec-title">Ce que nous mettons en scène</h2><p class="sec-lead">Six formats, une même exigence : que la salle s'en souvienne.</p></div></div>
+<div class="ev-list"><a class="reveal" style="--d:0ms" href="../#contact"><b>01</b><h3>Concerts</h3><span class="thumb" style="background-image:url('../assets/production.png')" aria-hidden="true"></span></a><a class="reveal" style="--d:70ms" href="../#contact"><b>02</b><h3>Conférences</h3><span class="thumb" style="background-image:url('../assets/casque.png')" aria-hidden="true"></span></a><a class="reveal" style="--d:140ms" href="../#contact"><b>03</b><h3>Séminaires</h3><span class="thumb" style="background-image:url('../assets/studio-nuit.png')" aria-hidden="true"></span></a><a class="reveal" style="--d:210ms" href="../#contact"><b>04</b><h3>Mariages</h3><span class="thumb" style="background-image:url('../assets/guitare.png')" aria-hidden="true"></span></a><a class="reveal" style="--d:280ms" href="../#contact"><b>05</b><h3>Anniversaires</h3><span class="thumb" style="background-image:url('../assets/academie.png')" aria-hidden="true"></span></a><a class="reveal" style="--d:350ms" href="../#contact"><b>06</b><h3>Soirées</h3><span class="thumb" style="background-image:url('../assets/store.png')" aria-hidden="true"></span></a></div>
+</div>
+</section>
+
+<section class="sec ev-dark" style="padding-top:0">
+<div class="wrap">
+<div class="sec-head reveal"><span class="sec-num">02</span><div><h2 class="sec-title">Interne et prestation</h2></div></div>
+<div class="pgrid pgrid--3">
+<div class="pcard reveal"><span class="tagline">Nos événements</span><h3>Ceux que nous organisons</h3><p>Concerts, conférences et séminaires portés par la maison : nous écrivons la programmation, nous montons la scène, nous accueillons le public.</p></div>
+<div class="pcard reveal" style="--d:90ms"><span class="tagline">Vos événements</span><h3>Ceux que nous couvrons</h3><p>Mariage, anniversaire, fête, soirée, concert : une couverture large et complète, sonorisation et lumière comprises.</p></div>
+<div class="pcard reveal" style="--d:180ms"><span class="tagline">La maison</span><h3>Tout au même endroit</h3><p>Le Store fournit le matériel, le Studio le son, la Production les images. Events assemble le tout.</p></div>
+</div>
+</div>
+</section>
+
+<section class="pcta ev-cta">
+<div class="wrap">
+<h2 class="reveal">Organiser<br/>mon <em>événement</em></h2>
+<a class="btn btn-acc reveal" style="--d:100ms" href="../#contact">Organiser mon événement <i class="fas fa-arrow-right"></i></a>
+</div>
+</section>
+<!-- ======================= FOOTER ======================= -->
+<footer id="contact">
+<div class="f-aura" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="f-grid-lines" aria-hidden="true"></div>
+
+<div class="wrap">
+<div class="f-top">
+<div>
+<div class="brand on-dark reveal" style="--lm:64px"><span class="brand-mark"></span><span class="brand-txt"><span class="n1">REATM</span><span class="n2">RECORDS</span></span></div>
+<div class="f-brand-tag reveal" style="--d:80ms">Promouvoir la musique,<br/>partager <em>l'Évangile</em></div>
+<div class="f-eq reveal" style="--d:140ms" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="f-badge reveal" style="--d:200ms"><span class="live"></span> Studio ouvert du mercredi au dimanche</div>
+</div>
+<div class="f-news reveal" style="--d:120ms">
+<h4>Restez dans la boucle</h4>
+<p>Nouveautés de l'académie, sessions studio, sorties et offres du store : recevez tout en avant-première.</p>
+<form class="f-form" id="newsForm" novalidate>
+<input type="email" id="newsEmail" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail" required/>
+<button class="btn btn-red" type="submit">S'abonner <i class="fas fa-paper-plane"></i></button>
+</form>
+<div class="f-note" id="newsNote"><i class="fas fa-lock"></i> Pas de spam. Désinscription en un clic.</div>
+</div>
+</div>
+
+<div class="f-cols">
+<div>
+<h4>Nous trouver</h4>
+<div class="f-line"><span class="fi"><i class="fas fa-map-marker-alt"></i></span><span>RCEANNAIM DOHATABRIQUET 11000 SALE<br/>106 AV LALLAL BEN ABDELLAH RABAT VILLE</span></div>
+<div class="f-line y"><span class="fi"><i class="fas fa-envelope"></i></span><span><a href="mailto:Contact.reatm@gmail.com">Contact.reatm@gmail.com</a></span></div>
+<div class="f-line"><span class="fi"><i class="fas fa-phone-alt"></i></span><span><a href="tel:+212651475341">+212 06 51 47 53 41</a></span></div>
+</div>
+<div>
+<h4>Navigation</h4>
+<ul class="f-nav">
+<li><a href="../#top">Accueil</a></li>
+<li><a href="../#services">Nos services</a></li>
+<li><a href="../#academie">Académie</a></li>
+<li><a href="../#mission">Production</a></li>
+<li><a href="../#contact">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4>Nos pôles</h4>
+<ul class="f-nav">
+<li><a href="../#services">REATM Studio</a></li>
+<li><a href="../#academie">REATM Academy</a></li>
+<li><a href="../#services">REATM Prod</a></li>
+<li><a href="../#services">REATM Store</a></li>
+<li><a href="../#services">REATM Events</a></li>
+</ul>
+</div>
+<div>
+<h4>Suivez-nous</h4>
+<div class="f-soc">
+<a href="#" aria-label="Instagram"><svg class="ic"><use href="#ic-ig"></use></svg></a>
+<a href="#" aria-label="WhatsApp"><svg class="ic"><use href="#ic-wa"></use></svg></a>
+<a href="#" aria-label="YouTube"><svg class="ic"><use href="#ic-yt"></use></svg></a>
+<a href="#" aria-label="TikTok"><svg class="ic"><use href="#ic-tt"></use></svg></a>
+<a href="#" aria-label="Facebook"><svg class="ic"><use href="#ic-fb"></use></svg></a>
+</div>
+<div class="f-handle"><i class="fas fa-hashtag"></i>@REATMRECORDS</div>
+<div class="f-handle" style="margin-top:10px"><i class="fas fa-music"></i>Plus qu'un studio, une famille !</div>
+</div>
+</div>
+</div>
+
+<div class="wrap">
+<div class="f-bottom">
+<span>© <span id="year">2025</span> REATM RECORDS. Tous droits réservés.</span>
+<div class="f-bottom-links">
+<a href="#">Mentions légales</a>
+<a href="#">Confidentialité</a>
+<a href="../#contact">Contact</a>
+</div>
+<button class="to-top" id="toTopFooter" aria-label="Revenir en haut"><i class="fas fa-arrow-up"></i></button>
+</div>
+</div>
+</footer>
+
+<button class="fab" id="fab" aria-label="Revenir en haut"><i class="fas fa-arrow-up"></i></button>
+
+
+<button class="fab" id="fab" aria-label="Revenir en haut"><i class="fas fa-arrow-up"></i></button>
+<script src="../js/reatm.js"></script>
+
+</body>
+</html>
