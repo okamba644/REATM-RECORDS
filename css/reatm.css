@@ -358,7 +358,7 @@ html[data-theme="dark"] h2.section-title .y{color:var(--yellow)}
 .lead{color:var(--muted);font-size:14.5px;line-height:1.85;margin:18px 0 26px;max-width:560px}
 /* ---------- Les 5 univers : une grille éditoriale, pas cinq rectangles ---------- */
 .cards{
-  display:grid;grid-template-columns:repeat(6,1fr);
+  display:grid;grid-template-columns:repeat(5,1fr);
   gap:clamp(16px,1.5vw,24px);
   perspective:1600px;
 }
@@ -367,15 +367,12 @@ html[data-theme="dark"] h2.section-title .y{color:var(--yellow)}
   --acc-img:#ffffff;    /* accent posé sur la photo, toujours lisible sur sombre */
   --glow:rgba(0,0,0,.16);
   position:relative;display:flex;flex-direction:column;isolation:isolate;
-  grid-column:span 2;
   border-radius:20px;overflow:hidden;background:var(--card);
   border:1px solid var(--border);
   box-shadow:var(--shadow);
   transform-style:preserve-3d;will-change:transform;
   transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s ease,border-color .5s ease,background-color .4s ease;
 }
-/* rythme éditorial : deux cartes vedettes, puis trois cartes compactes */
-.ucard--feature{grid-column:span 3}
 .ucard:hover{transform:translateY(-12px);border-color:color-mix(in srgb,var(--acc) 55%,transparent);box-shadow:0 30px 70px var(--glow)}
 @supports not (color: color-mix(in srgb,#000 50%,#fff)){
   .ucard:hover{border-color:var(--acc)}
@@ -390,7 +387,6 @@ html[data-theme="dark"] h2.section-title .y{color:var(--yellow)}
 
 /* ----- visuel ----- */
 .ucard-media{position:relative;overflow:hidden;height:210px;flex:0 0 auto}
-.ucard--feature .ucard-media{height:280px}
 .ucard-img{
   position:absolute;inset:0;background-size:cover;background-position:center;
   transform:scale(1.02);
@@ -434,7 +430,7 @@ html[data-theme="dark"] h2.section-title .y{color:var(--yellow)}
 /* le mot d'ordre de l'univers, posé sur l'image */
 .ucard-word{
   position:absolute;left:18px;right:18px;bottom:16px;z-index:4;
-  font-size:clamp(20px,2.1vw,30px);font-weight:800;letter-spacing:-.6px;line-height:1;color:#fff;
+  font-size:clamp(19px,1.7vw,26px);font-weight:800;letter-spacing:-.6px;line-height:1;color:#fff;white-space:nowrap;
   text-transform:uppercase;
   transform:translateY(0);transition:transform .6s cubic-bezier(.16,1,.3,1);
 }
@@ -778,11 +774,7 @@ footer .wrap{position:relative;z-index:2}
 
 /* =================== RESPONSIVE =================== */
 @media(max-width:1300px){
-  .cards{grid-template-columns:repeat(4,1fr)}
-  .ucard{grid-column:span 2}
-  .ucard--feature{grid-column:span 2}
-  .ucard:last-child{grid-column:span 4}
-  .ucard--feature .ucard-media{height:230px}
+  .cards{grid-template-columns:repeat(3,1fr)}
   .mission-items{grid-template-columns:repeat(3,1fr);gap:26px 0}
 }
 @media(max-width:1080px){
@@ -809,8 +801,6 @@ footer .wrap{position:relative;z-index:2}
   .aca-photo{min-height:240px}
   html[data-theme="dark"] .aca-side{border-left:none;border-top:1px solid var(--border)}
   .cards{grid-template-columns:repeat(2,1fr)}
-  .ucard,.ucard--feature{grid-column:span 1}
-  .ucard:last-child{grid-column:span 2}
   .f-top{grid-template-columns:1fr;gap:30px;padding:48px 0 36px}
 }
 @media(max-width:700px){
@@ -819,8 +809,7 @@ footer .wrap{position:relative;z-index:2}
   .hero-features .f{flex:1 1 calc(50% - 10px);padding:11px 13px;border-right:none;border:1px solid var(--border);border-radius:14px;background:var(--bg-alt);font-size:11.8px}
   .hero-features .f:first-child{padding-left:13px}
   .cards{grid-template-columns:1fr;gap:18px}
-  .ucard,.ucard--feature,.ucard:last-child{grid-column:span 1}
-  .ucard-media,.ucard--feature .ucard-media{height:220px}
+  .ucard-media{height:220px}
   .f-cols{grid-template-columns:1fr;gap:30px;padding:36px 0 32px}
   .f-bottom{justify-content:center;text-align:center;flex-direction:column-reverse;gap:16px}
   .instruments{gap:16px}
@@ -937,7 +926,7 @@ html[data-theme="light"] body[data-entity="studio"] .btn-acc{background:#111;col
 .cur-dot{width:5px;height:5px;background:var(--acc);margin:-2.5px 0 0 -2.5px}
 html.has-cursor .cur,html.has-cursor .cur-dot{opacity:1}
 html.has-cursor .cur.is-active{width:64px;height:64px;margin:-32px 0 0 -32px;background:color-mix(in srgb,var(--acc) 14%,transparent)}
-html.has-cursor a,html.has-cursor button,html.has-cursor .ucard{cursor:none}
+/* le curseur du système reste visible : l'anneau ne fait que l'accompagner */
 
 /* =================== TRANSITION DE PAGE =================== */
 .veil{position:fixed;inset:0;z-index:500;pointer-events:none;background:var(--acc);opacity:0;transition:opacity .55s ease}
