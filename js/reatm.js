@@ -174,7 +174,7 @@
       i=(i+1)%slides.length;
       slides[i].classList.add('is-on');
       sync();
-    },4600);
+    },3000);
   })();
 
   /* ---------- Curseur personnalisé, avec effet magnétique ---------- */
