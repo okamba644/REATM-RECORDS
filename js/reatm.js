@@ -145,6 +145,51 @@
   });
 
   /* ---------- Année courante ---------- */
+  /* ---------- Hero cinématique : galeries qui défilent ---------- */
+  (function(){
+    var stage=document.getElementById('hstage');
+    if(!stage)return;
+    var dots=document.getElementById('hsDots');
+    stage.querySelectorAll('[data-gal]').forEach(function(gal,gi){
+      var slides=gal.querySelectorAll('.hs-slide');
+      if(slides.length<2)return;
+      var i=0,t=0;
+      if(gi===0&&dots){
+        for(var k=0;k<slides.length;k++){
+          var d=document.createElement('i');
+          if(k===0)d.className='on';
+          dots.appendChild(d);
+        }
+      }
+      if(reduce)return;
+      setInterval(function(){
+        t=(t%4)+1;
+        gal.classList.remove('tx-1','tx-2','tx-3','tx-4');
+        gal.classList.add('tx-'+t);
+        slides[i].classList.remove('is-on');
+        i=(i+1)%slides.length;
+        slides[i].classList.add('is-on');
+        if(gi===0&&dots){
+          for(var k=0;k<dots.children.length;k++){
+            dots.children[k].className = (k===i)?'on':'';
+          }
+        }
+      }, 4600 + gi*1100);
+    });
+    /* la composition suit légèrement le pointeur */
+    if(!reduce&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      var host=stage.parentNode;
+      host.addEventListener('pointermove',function(e){
+        var r=stage.getBoundingClientRect();
+        stage.style.setProperty('--px',(((e.clientX-r.left)/r.width)-.5).toFixed(3));
+        stage.style.setProperty('--py',(((e.clientY-r.top)/r.height)-.5).toFixed(3));
+      },{passive:true});
+      host.addEventListener('pointerleave',function(){
+        stage.style.setProperty('--px',0);stage.style.setProperty('--py',0);
+      });
+    }
+  })();
+
   /* ---------- Curseur personnalisé, avec effet magnétique ---------- */
   var finePointer=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   if(finePointer&&!reduce){
