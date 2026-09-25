@@ -149,20 +149,11 @@
   (function(){
     var gal=document.getElementById('hsMain');
     if(!gal)return;
-    var dots=document.getElementById('hsDots');
     var slides=gal.querySelectorAll('.hs-slide');
     if(slides.length<2)return;
     var i=0,t=1;
-    if(dots){
-      for(var k=0;k<slides.length;k++){
-        var d=document.createElement('i');
-        if(k===0)d.className='on';
-        dots.appendChild(d);
-      }
-    }
     function sync(){
       gal.classList.toggle('on-mark',slides[i].hasAttribute('data-mark'));
-      if(dots)for(var k=0;k<dots.children.length;k++)dots.children[k].className=(k===i)?'on':'';
     }
     sync();
     if(reduce)return;
